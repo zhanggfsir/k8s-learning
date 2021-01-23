@@ -1,0 +1,41 @@
+
+--- controller --- 
+pod controller 通过 label标签、selector 建立关系
+
+deployer 部署无状态应用
+
+命令行工具
+1.kubectl create deployment nginx --image=nignx 
+2.kubectl expose deployment nginx --port=80 --type=NodePort 
+3.kubectl get pod,svc
+
+kubectl --help
+
+kubectl get --help
+
+查看状态
+kubectl get cs
+
+
+示例
+1.导出yaml文件
+kubectl create deployment web --image=nignx --dry-run -o yaml
+2.使用yaml部署应用
+kubectl apply -f ngix.yaml
+拉取镜像
+kubectl get pods
+3.对外发布(暴露对外端口号)
+kubectl expose deployment web --port=80 --type=NodePort --target-port=80 --name=web1 -o yaml >web1.yaml
+
+kubectl apply -f web1.yaml
+
+kubectl get pods.svc
+
+
+
+
+
+
+
+
+

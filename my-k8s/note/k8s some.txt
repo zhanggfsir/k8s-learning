@@ -1,0 +1,39 @@
+Etcd  分布式的 K-V 存储，存储 k8s集群的状态和配置
+
+Docker 单进程，pod管理多个docker，pod是多进程的 
+
+Pod 容器调度的最小单位
+具有相同namespace的container的组合
+Pod 是 k8s 系统中可以创建和管理的最小单元。k8s 不会直接处理容器，而是 Pod，Pod 是由一个或多个 container 组成
+一个pod中容器之间通过 namespace 、group 相互隔离
+
+
+Pod container 关系
+1个pod 可以包含1个或者多个container 
+1个pod共享一个namespace：用户  网络 存储 ...
+Pod中起了2个容器，2个容器共享一个namespace，可以通过localhost通信
+
+docker 资源限制的本身，是有docker做到的，不是由pod做到的
+
+k8s 三大件
+1.kubeadm  初始化集群的指令
+2.kubelet  在集群中的每个节点上用来启动pod和容器
+3.kubectl 用来与集群通信的命令行工具
+
+
+
+
+Web 名称 -o 不在集群中真正创建，只是生成文件
+ --dry-run 尝试运行，并不真正运行 
+
+
+
+
+
+ersistentVolume（PV）是集群中由管理员配置的一段网络存储。 它是集群中的资源，就
+像节点是集群资源一样。 PV 是容量插件，如 Volumes，但其生命周期独立于使用 PV 的任
+何单个 pod。 此 API 对象捕获存储实现的详细信息，包括 NFS，iSCSI 或特定于云提供程
+序的存储系统。
+PersistentVolumeClaim（PVC）是由用户进行存储的请求。 它类似于 pod。 Pod 消耗节点
+资源，PVC 消耗 PV 资源。Pod 可以请求特定级别的资源（CPU 和内存）。声明可以请求特
+定的大小和访问模式（例如，可以一次读/写或多次只读）。
